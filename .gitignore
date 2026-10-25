@@ -1,0 +1,44 @@
+﻿# Secrets and environment variables
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+**/profiles.yml
+**/.user.yml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# dbt generated files
+**/target/
+**/logs/
+**/dbt_packages/
+
+# Airflow generated files and logs
+**/airflow/logs/
+**/airflow/standalone_admin_password.txt
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local credentials and configuration
+secrets/
+credentials/
+
+# Local Airflow environment
+New folder/.env
+New folder/logs/
+New folder/config/
+
+# Local Airflow configuration
+airflow/config/airflow.cfg
+
+# Windows folder metadata
+**/desktop.ini

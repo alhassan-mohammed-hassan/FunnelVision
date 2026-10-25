@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Clean staging view for ecommerce orders"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: website_session_id
+        data_tests:
+          - not_null
+
+      - name: user_id
+        data_tests:
+          - not_null
+
+  - name: stg_order_items
+    description: "Staging view for order line items"
+    columns:
+      - name: order_item_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        data_tests:
+          - not_null
+
+  - name: stg_website_sessions
+    description: "Staging view for website sessions"
+    columns:
+      - name: website_session_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_order_item_refunds
+    description: "Staging view for refunded order items"
+    columns:
+      - name: order_item_refund_id
+        data_tests:
+          - not_null
+          - unique

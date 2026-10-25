@@ -1,0 +1,21 @@
+services:
+airflow:
+image: apache/airflow:2.10.5
+container_name: funnelvision-airflow
+restart: unless-stopped
+env_file:
+- .env
+environment:
+AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/airflow.db
+_PIP_ADDITIONAL_REQUIREMENTS: "docker"
+ports:
+- "8080:8080"
+volumes:
+- ./airflow/dags:/opt/airflow/dags
+- ./dbt_project:/app/dbt_project
+- ./profiles:/root/.dbt
+- ./:/opt/airflow/project
+command: standalone
