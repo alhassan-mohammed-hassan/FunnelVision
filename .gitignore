@@ -42,3 +42,4 @@ airflow/config/airflow.cfg
 
 # Windows folder metadata
 **/desktop.ini
+New folder/docker-compose.yaml
