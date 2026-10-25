@@ -1,57 +1,97 @@
 ﻿# FunnelVision
-## Modern Data Stack Analytics Project
 
-### 1. Project Overview
-FunnelVision is an e-commerce analytics project designed to transform raw business data into analytics-ready datasets and present key business metrics through an interactive dashboard.
+### E-Commerce Marketing Funnel Analytics | Modern Data Stack
 
-### 2. Technology Stack
-- Snowflake: Cloud data warehouse and storage.
-- dbt: Data transformation and data quality testing.
-- Apache Airflow: Pipeline orchestration and scheduling.
-- Streamlit: Interactive analytics dashboard.
-- Docker: Containerization and execution environment.
+FunnelVision is an end-to-end e-commerce analytics project that transforms raw business data into analytics-ready datasets and presents key business metrics through an interactive dashboard.
 
-### 3. Data Pipeline
-1. Load raw e-commerce CSV data into Snowflake.
-2. Transform raw data into staging models using dbt.
-3. Build intermediate models for further transformations.
-4. Generate analytical marts for reporting.
-5. Execute dbt tests to validate data quality.
+## Technology Stack
+
+* **Snowflake:** Cloud data warehouse.
+* **dbt:** Data transformation and data quality testing.
+* **Apache Airflow:** Workflow orchestration.
+* **Streamlit:** Interactive analytics dashboard.
+* **Docker:** Containerization.
+* **Python and SQL:** Application logic and data transformations.
+
+## Data Pipeline
+
+1. Load e-commerce CSV data into Snowflake.
+2. Transform raw data using dbt staging models.
+3. Build intermediate transformation models.
+4. Generate analytical marts.
+5. Validate data quality using dbt tests.
 6. Orchestrate dbt execution and testing through Airflow.
 7. Visualize analytical results through Streamlit.
 
-### 4. dbt Models
+## dbt Models
+
 The project contains 10 dbt models:
-- 6 staging models.
-- 2 intermediate models.
-- 2 analytical mart models.
 
-### 5. Data Quality
-The dbt test execution completed successfully:
-- 11 tests passed.
-- 0 warnings.
-- 0 errors.
+* 6 staging models.
+* 2 intermediate models.
+* 2 analytical mart models.
 
-### 6. Airflow Orchestration
-The Airflow DAG `funnelvision_dbt_pipeline` executes:
+### Data Quality Results
+
+* 11 tests passed.
+* 0 warnings.
+* 0 errors.
+
+## Airflow Pipeline
+
+The DAG `funnelvision_dbt_pipeline` executes two sequential tasks:
+
 1. `dbt_run`
 2. `dbt_test`
 
-The test task runs after the transformation task completes successfully.
+## Dashboard
 
-### 7. Dashboard
-The Streamlit dashboard presents key performance indicators, charts, and filters based on the project's analytical data.
+The Streamlit dashboard provides key performance indicators, charts, and filters for exploring e-commerce performance.
 
-### 8. Project Structure
-- `dbt_project/`: dbt project and transformation models.
-- `profiles/`: dbt connection profile.
-- `airflow/dags/`: Airflow DAG definitions.
-- `streamlit_app/`: Streamlit dashboard and dependencies.
-- `data/`: Project data files.
-- `docker-compose.yml`: Project container configuration.
+Dashboard evidence is available in [`evidence/dashboard/`](evidence/dashboard/).
 
-### 9. Security
-Credentials and secrets must be stored in environment variables and must not be committed to version control or included in screenshots.
+## Architecture
 
-### 10. Current Status
-The core pipeline has been implemented, dbt models and tests have passed, the Airflow DAG has completed successfully, and the Streamlit dashboard is running.
+See the [architecture diagram](docs/architecture/architecture.png).
+
+## Repository Structure
+
+```text
+FunnelVision/
+├── airflow/
+│   └── dags/
+├── data/
+├── dbt_project/
+│   └── models/
+│       ├── staging/
+│       ├── intermediate/
+│       └── marts/
+├── docker/
+│   └── dbt/
+├── docs/
+│   └── architecture/
+├── evidence/
+│   ├── airflow/
+│   ├── dashboard/
+│   ├── dbt/
+│   └── snowflake/
+├── presentation/
+├── streamlit_app/
+├── docker-compose.yml
+└── README.md
+```
+
+## Evidence and Presentation
+
+* Screenshots documenting Airflow, dbt, Snowflake, and the dashboard are stored in `evidence/`.
+* The project presentation is available at [`presentation/FunnelVision_Presentation.pptx`](presentation/FunnelVision_Presentation.pptx).
+
+## Security
+
+* Keep credentials and secrets in local environment files.
+* Never commit `.env`, database passwords, or private connection profiles.
+* Review files before pushing changes to a public repository.
+
+## Project Status
+
+The core pipeline has been implemented. The recorded dbt tests passed, the Airflow workflow completed successfully, and the Streamlit dashboard was running during project validation.
